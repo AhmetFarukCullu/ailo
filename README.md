@@ -24,3 +24,4 @@ Ailo daha azını yapar.
 ## Durum
 v1.1-beta  
 Kişisel kullanım ve sınırlı test amaçlıdır.
+ 
