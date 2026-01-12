@@ -1,0 +1,741 @@
+/* =========================
+   GLOBAL BOX SIZING FIX
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =========================
+   =========================
+   ==== FAZ-1 (LOCKED) =====
+   =========================
+========================= */
+  
+/* =========================
+   0. CSS VARIABLES (LOCKED)
+========================= */
+
+:root {
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 26px;
+
+  /* Base */
+  --bg: #F9FAFB;
+  --card-bg: #FFFFFF;
+  --text-main: #111827;
+  --text-muted: #6B7280;
+  --border-soft: #E5E7EB;
+
+  /* Brand */
+  --primary: #2ED3B7;
+
+  /* Semantic */
+  --income: #16A34A;
+  --expense: #DC2626;
+  --warning: #F59E0B;
+}
+
+/* =========================
+   THEME: LIGHT (EXPLICIT)
+========================= */
+
+[data-theme="light"] {
+  --bg: #F9FAFB;
+  --card-bg: #FFFFFF;
+  --text-main: #111827;
+  --text-muted: #6B7280;
+  --border-soft: #E5E7EB;
+
+  --primary: #2ED3B7;
+
+  --income: #16A34A;
+  --expense: #DC2626;
+  --warning: #F59E0B;
+}
+
+/* =========================
+   THEME: DARK
+========================= */
+
+[data-theme="dark"] {
+  --bg: #0F172A;          /* Ana arka plan */
+  --card-bg: #111827;    /* Kart yüzeyi */
+  --text-main: #E5E7EB;  /* Ana metin */
+  --text-muted: #9CA3AF; /* İkincil metin */
+  --border-soft: #1F2937;
+
+  --primary: #2ED3B7;    /* Marka rengi AYNI */
+
+  --income: #4ADE80;
+  --expense: #F87171;
+  --warning: #FBBF24;
+}
+
+/* =========================
+   THEME SYSTEM
+========================= */
+
+body.dark {
+  --bg: #0f172a;
+  --card-bg: #111827;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border-soft: #1f2933;
+}
+
+/* =========================
+   1. TYPOGRAPHY (LOCKED)
+========================= */
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 6px 0;
+}
+
+small,
+.text-muted {
+  font-size: var(--text-xs);
+  color: #9CA3AF;
+}
+
+/* =========================
+   2. BASE LAYOUT (LOCKED)
+========================= */
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+hr {
+  height: 1px;
+  background: var(--border-soft);
+  margin: 24px 0;
+}
+
+/* =========================
+   3. CORE COMPONENTS (LOCKED)
+========================= */
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+button {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+/* =========================
+   4. DATA VISUALS (LOCKED)
+========================= */
+
+.progress-container {
+  width: 100%;
+  height: 10px;
+  background-color: var(--border-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--primary, #2ED3B7);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* =========================
+   5. ACHIEVEMENTS (LOCKED)
+========================= */
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.achievement-card {
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* =========================
+   =========================
+   ======= FAZ-2 ===========
+   =========================
+========================= */
+
+/* ===========================
+   6. BOTTOM NAVIGATION (LOCKED)
+=========================== */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #ffffff;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 18px;
+}
+
+.nav-item.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-item.active span {
+  transform: scale(1.05);
+}
+
+.bottom-nav .nav-item:active {
+  background-color: rgba(46, 211, 183, 0.18);
+  transform: scale(0.96);
+}
+
+.bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* =========================
+   SCROLL BUFFER – 4.2
+========================= */
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 96px; /* bottom nav + nefes */
+  }
+}
+
+/* Bottom Nav Text Fix */
+
+.bottom-nav .nav-item {
+  color: var(--text-muted);
+}
+
+.bottom-nav .nav-item span,
+.bottom-nav .nav-item small {
+  color: inherit;
+}
+
+/* Hover */
+.bottom-nav .nav-item:hover {
+  color: var(--primary);
+}
+
+/* Active */
+.bottom-nav .nav-item.active {
+  color: var(--primary);
+}
+
+/* Bottom Nav Item Background Hover */
+
+.bottom-nav .nav-item {
+  padding: 6px 0;
+  border-radius: 12px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Hover background */
+.bottom-nav .nav-item:hover {
+  background-color: rgba(46, 211, 183, 0.08);
+}
+
+/* Active background */
+.bottom-nav .nav-item.active {
+  background-color: rgba(46, 211, 183, 0.12);
+}
+
+/* ========================
+   7. SIDE DRAWER (LOCKED)
+======================== */
+
+.side-drawer {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: white;
+  transition: left 0.3s ease;
+  border-right: 1px solid var(--border-soft);
+  box-shadow: 4px 0 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  z-index: 1200;
+
+  /* ŞU AN GİZLİ */
+  transform: translateX(-100%);
+}
+
+.side-drawer-header {
+  margin-bottom: 24px;
+}
+
+.side-drawer-header h3 {
+  margin: 0;
+}
+
+.side-drawer-nav a {
+  display: block;
+  padding: 10px 0;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.side-drawer-nav a:hover {
+  color: var(--primary);
+}
+
+/* SIDE DRAWER — OPEN STATE */
+
+.side-drawer.open {
+  transform: translateX(0);
+  left: 0;
+}
+
+/* DRAWER OVERLAY */
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1100; /* drawer: 1200 */
+}
+
+/* OPEN STATE */
+
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* BODY SCROLL LOCK */
+
+body.drawer-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* =========================
+   8. MOBILE INTERACTIONS (LOCKED)
+==========================*/
+
+/* =========================
+   TOUCH TARGET — BOTTOM NAV
+========================= */
+
+.bottom-nav .nav-item {
+  min-width: 64px;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  touch-action: manipulation;
+}
+
+/* =========================
+   TOUCH TARGET — ICON BUTTONS
+========================= */
+
+button[data-id],
+button[data-goal],
+.list-item button {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+/* =========================
+   TOUCH TARGET — SIDE DRAWER
+========================= */
+
+.side-drawer-nav a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+}
+
+/* =========================
+   TAP FEEDBACK (MOBILE)
+========================= */
+
+@media (hover: none) {
+  .nav-item:active,
+  button:active {
+    transform: scale(0.96);
+    background-color: rgba(46, 211, 183, 0.18);
+  }
+}
+
+/* =========================
+   TOUCH TARGET SIZE
+========================= */
+
+button,
+.nav-item,
+.side-drawer-nav a {
+  min-height: 44px;
+}
+
+.bottom-nav {
+  touch-action: manipulation;
+}
+
+button,
+.nav-item {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =====================
+   9. SCROLL & LAYOUT (LOCKED)
+======================*/
+
+/* =========================
+   SCROLL RHYTHM – 4.1
+========================= */
+
+.card + .card {
+  margin-top: 8px;
+}
+
+.card > * + * {
+  margin-top: 10px;
+}
+
+/* =========================
+   SCROLL BEHAVIOR – 4.3
+========================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior: contain;
+}
+
+/* =========================
+   VISUAL RHYTHM – 4.4
+========================= */
+
+/* Büyük section araları */
+.card {
+  margin-bottom: 24px;
+}
+
+/* Card içi başlıklar biraz daha nefes alsın */
+.card h3 {
+  margin-bottom: 14px;
+}
+
+/* Uzun listelerde göz yormasın */
+ul li {
+  margin-bottom: 6px;
+}
+
+/* Bölüm geçişleri daha net olsun */
+hr {
+  margin: 32px 0;
+}
+
+.card > * + * {
+  margin-top: 12px;
+}
+
+/* =========================
+   =========================
+   ======= FAZ-3 ===========
+   =========================
+========================= */
+
+/* =========================
+   FAZ-3 / ADIM-1
+   APP LOADER
+========================= */
+
+#app-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+#app-loader[aria-hidden="true"] {
+  display: none;
+}
+
+.app-loader-inner {
+  text-align: center;
+}
+
+.app-loader-inner h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.app-loader-inner p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ======================
+   FAZ-3 / ADIM-2
+   LOGO (BASE STRUCTURE)
+====================== */
+
+.ailo-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-main);
+  user-select: none;
+}
+
+.ailo-logo-icon {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+
+.ailo-logo-text {
+  letter-spacing: -0.02em;
+}
+
+/* ======================
+   LOGO POSITIONING
+====================== */
+
+.ailo-logo {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 640px) {
+  .ailo-logo {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+/* ======================
+   LOGO ICON
+====================== */
+
+.ailo-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ailo-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: relative;
+}
+
+/* küçük “kesit” hissi */
+.ailo-mark::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.ailo-text {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ======================
+   LOGO RESPONSIVE FIX
+====================== */
+
+@media (max-width: 480px) {
+  .ailo-mark {
+    width: 9px;
+    height: 9px;
+  }
+
+  .ailo-text {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ailo-mark {
+    width: 10px;
+    height: 10px;
+  }
+
+  .ailo-text {
+    font-size: 18px;
+  }
+}
+
+/* =========================
+   DARK THEME — POLISH
+========================= */
+
+body.dark {
+  --bg: #0F172A;              /* Ana arka plan */
+  --card-bg: #111827;        /* Kart yüzeyi */
+  --border-soft: #1F2933;    /* Yumuşak sınırlar */
+  --text-main: #E5E7EB;      /* Ana metin */
+  --text-muted: #9CA3AF;     /* İkincil metin */
+}
+
+/* Kartlar */
+body.dark .card {
+  background: var(--card-bg);
+  box-shadow: none; /* Dark theme'de gölge yerine katman hissi */
+  border: 1px solid var(--border-soft);
+}
+
+/* Divider */
+body.dark hr {
+  background: var(--border-soft);
+}
+
+/* Input & Select */
+body.dark input,
+body.dark select {
+  background: #020617;
+  color: var(--text-main);
+  border: 1px solid var(--border-soft);
+}
+
+/* Bottom nav */
+body.dark .bottom-nav {
+  background: #020617;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ======================
+   CATEGORY TIPS
+====================== */
+
+.category-tips {
+  background: var(--card-bg);
+  border-left: 4px solid var(--primary);
+}
+
+.category-tips h4 {
+  margin-bottom: 6px;
+}
+
+.category-tips p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =========================
+   VIEW VISIBILITY (v1.2-PHASE-1.1)
+========================= */
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}

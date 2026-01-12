@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ailo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- =========================
+     AILO LOGO
+========================= -->
+<div class="ailo-logo">
+  <span class="ailo-mark"></span>
+  <span class="ailo-text">Ailo</span>
+</div>
+
+<button id="themeToggle" aria-label="Tema değiştir">
+  🌙
+</button>
+
+<!-- =========================
+     VIEW CONTAINER
+========================= -->
+<main id="view-container">
+
+<!-- =========================
+     APP LOADER (FAZ-3 / ADIM-1)
+========================= -->
+<div id="app-loader" aria-hidden="false">
+  <div class="app-loader-inner">
+    <h1>Ailo</h1>
+    <p class="text-muted">yükleniyor…</p>
+  </div>
+</div>
+
+<button id="openDrawerBtn" style="margin-bottom: 12px;">
+  ☰ Menü
+</button>
+
+<section class="view" data-view="add">
+  <div class="card">
+    <input type="number" id="amountInput" placeholder="₺ Tutar">
+	<label>
+	  <input type="checkbox" id="fixedInput">
+	  Sabit kalem (her ay tekrar eder)
+	</label>
+    <input id="note" type="text" placeholder="Açıklama">
+    <select id="type">
+      <option value="income">Gelir</option>
+      <option value="expense">Gider</option>
+    </select>
+	
+	<select id="category">
+	  <option value="Genel">Genel</option>
+	  <option value="Maaş">Maaş</option>
+	  <option value="Ek Kazanç">Ek Kazanç</option>
+	  <option value="Market">Market</option>
+	  <option value="Kira">Kira</option>
+	  <option value="Fatura">Fatura</option>
+	  <option value="Aidat">Aidat</option>
+	  <option value="Diğer">Diğer</option>
+	</select>
+
+	
+    <button onclick="addTransaction()">Ekle</button>
+  </div>
+
+<!-- =========================
+     CATEGORY TIPS (PHASE-3)
+========================= -->
+<div class="card category-tips" id="categoryTips">
+  <h4>💡 İpucu</h4>
+  <p class="text-muted">
+    Bir kategori seçtiğinde burada küçük öneriler göreceksin.
+  </p>
+</div>
+
+</section>
+
+<section class="view active" data-view="home">
+  
+  <!-- İşlemler kartı -->
+  <div class="card">
+	<h3>İşlemler</h3>
+
+	<select id="monthFilter" onchange="changeMonth(this.value)">
+	</select>
+
+	<div id="list"></div>
+	
+	<select id="categoryFilter">
+		<option value="all">Tüm Kategoriler</option>
+	</select>
+
+	
+  </div>
+
+
+  <!-- Aylık özet ve genel durum -->
+  <div class="card">
+  <h3 id="summaryTitle">Aylık Özet</h3>
+
+  <p>Gelir: <span id="income" class="amount">0</span></p>
+  <p>Gider: <span id="expense" class="amount">0</span></p>
+  <p>Net: <span id="balance" class="amount">0</span></p>
+  
+  <h4>Kategori Dağılımı</h4>
+  <ul id="categorySummary"></ul>
+  
+  <h3>Genel Durum (Tüm Zamanlar)</h3>
+
+  <p>Toplam Gelir: <span id="overallIncome" class="amount"></span></p>
+  <p>Toplam Gider: <span id="overallExpense" class="amount"></span></p>
+  <p><strong>Net Durum: <span id="overallBalance" class="amount"></span></strong></p>
+
+  <h4>Kategori Bazlı (Tüm Zamanlar)</h4>
+  <ul id="overallCategorySummary"></ul>
+  
+  <!-- Top harcamalar -->
+  <h4>Top 10 Harcama (Tüm Zamanlar)</h4>
+  <ol id="topExpenses"></ol>
+  
+   <!-- Sabit kalemler -->
+  <hr>
+  <h3>Sabit Kalemler</h3>
+  <ul id="fixedList"></ul>
+</section>
+
+  <hr>
+<section class="view" data-view="goals">
+  <h3>Tasarruf Hedefleri</h3>
+
+  <input type="text" id="goalName" placeholder="Hedef adı">
+  <input type="number" id="goalAmount" placeholder="Hedef tutar (₺)">
+  <button id="addGoalBtn">Hedef Ekle</button>
+
+  <ul id="goalsList"></ul>
+  
+  <div class="card">
+  <h4>Hedefe Katkı Ekle</h4>
+
+  <select id="goalSelect"></select>
+  <input type="number" id="contributionAmount" placeholder="Katkı tutarı (₺)">
+  <button id="addContributionBtn">Katkı Ekle</button>
+  </div>
+</section>
+
+<section class="view" data-view="achievements">
+  <div class="card">
+    <h3>🏆 Başarılar</h3>
+    <p class="text-muted">
+      Bu bölüm Aşama-2’de aktif olacak.
+    </p>
+  </div>
+</section>
+
+  </div>
+  
+ <script src="js/helpers.js"></script>
+ 
+ <script src="js/state.js"></script>
+ 
+ <script src="js/transactions.js"></script>
+ <script src="js/goals.js"></script>
+ 
+ <script src="js/achievements.js"></script>
+ 
+ <script src="js/ui.js"></script>
+ 
+ <script src="js/app.js"></script> <!-- init -->
+
+
+<div style="text-align:center; margin-top:20px;">
+  <a href="achievements.html">🏆 Başarılarımı Gör</a>
+</div>
+
+</main>
+
+<!-- =========================
+     SIDE DRAWER (SKELETON)
+========================= -->
+<aside class="side-drawer" aria-hidden="true">
+  <div class="side-drawer-header">
+    <h3>Ailo</h3>
+    <small>Kişisel Finans</small>
+  </div>
+
+  <nav class="side-drawer-nav">
+    <a href="#">Ayarlar</a>
+    <a href="#">Hakkında</a>
+    <a href="#">Destek</a>
+  </nav>
+</aside>
+
+<!-- =========================
+     BOTTOM NAVIGATION
+========================= -->
+<nav class="bottom-nav">
+  <button class="nav-item active" data-target="home">
+    <span>🏠</span>
+    <small>Ana</small>
+  </button>
+
+  <button class="nav-item" data-target="add">
+    <span>➕</span>
+    <small>Ekle</small>
+  </button>
+
+  <button class="nav-item" data-target="goals">
+    <span>🎯</span>
+    <small>Hedef</small>
+  </button>
+
+  <button class="nav-item" data-target="achievements">
+    <span>🏆</span>
+    <small>Başarı</small>
+  </button>
+</nav>
+
+<!-- =========================
+     DRAWER OVERLAY
+========================= -->
+
+<div class="drawer-overlay"></div>
+
+</body>
+</html>
