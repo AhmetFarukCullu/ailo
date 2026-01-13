@@ -1,33 +1,48 @@
 # Ailo
 
+Ailo, karmaşık tablolar olmadan paranla olan günlük ilişkini daha net görmene yardımcı olur.
+
 Ailo, kişisel finansını sakin, baskısız ve minimal bir şekilde takip etmen için tasarlanmış deneysel bir web uygulamasıdır.
 
 ## Ne yapar?
-- Gelir / gider takibi
-- Aylık özet ve kategori dağılımı
-- Tasarruf hedefleri
-- Basit başarı (achievement) sistemi
+
+* Gelir / gider takibi
+* Aylık özet ve kategori dağılımı
+* Tasarruf hedefleri
+* Basit başarı (achievement) sistemi
 
 ## Ne yapmaz?
-- Banka entegrasyonu yok
-- Otomatik öneriler yok
-- Otomatik veri çekmez
-- Bildirim yağmuru yok
-- Finans koçu rolüne girmez
-- Sosyal veya paylaşımlı bir platform değildir
+
+* Banka entegrasyonu yok
+* Otomatik öneriler yok
+* Otomatik veri çekmez
+* Bildirim yağmuru yok
+* Finans koçu rolüne girmez
+* Sosyal veya paylaşımlı bir platform değildir
+
+## Ne değildir?
+
+* Bankacılık uygulaması değildir
+* Otomatik para yöneten bir sistem değildir
+* Finansal tavsiye veren bir araç değildir
 
 ## Neden var?
+
 Çünkü çoğu finans uygulaması:
-- fazla konuşur
-- fazla ister
-- fazla karar verir
+
+* fazla konuşur
+* fazla ister
+* fazla karar verir
 
 Ailo daha azını yapar.
 
 ## Durum
-Bu sürüm **v1.1-beta**’dır.   
+
+Bu sürüm **v1.1-beta**’dır.  
 Kişisel kullanım ve sınırlı test içindir.
 Amaç: gerçek kullanıcı davranışını ve sürtünmeleri gözlemlemek.
 
 ## Canlı Demo
+
 👉 https://ailoweb.netlify.app/
+
